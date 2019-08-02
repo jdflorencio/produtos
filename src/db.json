@@ -1,5 +1,35 @@
 {
   "produtos":[
+    {
+      "id": 1,
+      "produto": "sabão",
+      "categoria": 1
+    },
+    {
+      "id": 2,
+      "produto": "Sabão em pó",
+      "categoria": 1
+    },
+    {
+      "id": 3,
+      "produto": "sabão liquido",
+      "categoria": 1
+    },
+    {
+      "id": 4,
+      "produto": "Biscoito ",
+      "categoria": 2
+    },
+    {
+      "id": 5,
+      "produto": "Arroz",
+      "categoria": 2
+    },
+    {
+      "id": 6,
+      "produto": "Feijao",
+      "categoria": 2
+    }    
 
   ],
   "categorias": [

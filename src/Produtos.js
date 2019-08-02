@@ -44,7 +44,7 @@ class Produtos extends Component {
 			<div className='col-md-10'>
 				<h3>Produtos</h3>
 					<Route exact path={match.url} component={ProdutosHome} />
-					<Route  path={match.url+'/categoria/:catId'} component={Categoria} />
+          <Route  path={match.url+'/categoria/:catId'} component={Categoria} />
 			</div>
 		</div>)
 		}
