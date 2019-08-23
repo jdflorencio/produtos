@@ -24,7 +24,7 @@ class Produtos extends Component {
   renderCategoria(cat){
     return (
       <li key={cat.id}>
-        <Link to={`produtos/categoria/${cat.id}`}>{cat.categoria}</Link>
+        <Link to={`/produtos/categoria/${cat.id}`}>{cat.categoria}</Link>
       </li>
     )
   }
@@ -39,7 +39,7 @@ class Produtos extends Component {
         {categorias.map(this.renderCategoria)}
         </ul>
         
-				<Link to='produtos/categoria/1'>Categorias 1</Link>
+				<Link to='/produtos/categoria/1'>Categorias 1</Link>
       </div>
 			<div className='col-md-10'>
 				<h3>Produtos</h3>

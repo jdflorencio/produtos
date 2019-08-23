@@ -3,23 +3,29 @@ import axios from 'axios'
 
 class Categoria extends Component{
 	constructor(props){
-			super(props)
-			this.state = {
-					produtos: []
-			}
-	}
+    super(props)
+    this.loadData = this.loadData.bind(this)
+    this.state = {
+        produtos: []
+    }
+  }
 	componentDidMount (){
-			const id = this.props.match.params.catId
-			axios
-			.get(`http://localhost:3001/produtos?categoria=${id}`)
-			.then(res => (
-					this.setState({
-						produtos: res.data
-					})
-			))
-	}
+    const id = this.props.match.params.catId
+    this.loadData(id)
+  }
+
+  loadData(id) {
+    axios
+    .get(`http://localhost:3001/produtos?categoria=${id}`)
+    .then(res => (
+        this.setState({
+          produtos: res.data
+        })
+    ))
+  }
+
 	componentWillReceiveProps(newProps) {
-		console.log(newProps)
+	this.loadData(newProps.match.params.catId)
 	}
 	
 	render(){
