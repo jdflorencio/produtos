@@ -39,30 +39,6 @@
     {
       "id": 2,
       "categoria": "Alimentos"
-    },
-    {
-      "id": 3,
-      "categoria": "Bebidas"
-    },
-    {
-      "id": 4,
-      "categoria": "hortalicas"
-    },
-    {
-      "categoria": "novacategoria",
-      "id": 5
-    },
-    {
-      "categoria": "teste",
-      "id": 6
-    },
-    {
-      "categoria": "infantis",
-      "id": 7
-    },
-    {
-      "categoria": "aasdasdasdasd",
-      "id": 8
     }
   ]
 }

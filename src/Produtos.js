@@ -10,9 +10,10 @@ class Produtos extends Component {
     this.state = {
       categorias: []
     }
-    this.removeCategoria = this.removeCategoria.bind(this)
+    // this.removeCategoria = this.removeCategoria.bind(this)
     this.handleNewCategoria = this.handleNewCategoria.bind(this)
     this.loadCategorias = this.loadCategorias.bind(this)    
+    this.renderCategoria = this.renderCategoria.bind(this)
   }
 
   loadCategorias() {
@@ -29,19 +30,19 @@ class Produtos extends Component {
     this.loadCategorias()    
   }
 
-  removeCategoria() {
-    // axios
-    // .delete('http://localhost:3001/categorias'+categoria.id)
-    // .then((res)=>this.loadCategorias())
-    console.log('aqui');
+  removeCategoria(categoria) {
+    axios
+    .delete('http://localhost:3001/categorias/'+categoria.id)
+    .then((res)=>this.loadCategorias())
   }
 
   renderCategoria(cat){
     return (
       <li key={cat.id}>
         <button 
-          className='btn btn-sm' 
-          onClick={()=>this.removeCategoria()}>
+          className='btn btn-sm'
+          onClick={() =>this.removeCategoria(cat)}
+          >
             <span className='glyphicon glyphicon-remove'></span>
         </button>
         <Link to={`/produtos/categoria/${cat.id}`}>{cat.categoria}</Link>
@@ -66,6 +67,7 @@ class Produtos extends Component {
     const { categorias } = this.state
 		return(
     <div className='row'>
+      
 			<div className='col-md-2'>
         <h3>Categorias</h3>
         <ul>
