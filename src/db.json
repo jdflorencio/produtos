@@ -1,5 +1,5 @@
 {
-  "produtos":[
+  "produtos": [
     {
       "id": 1,
       "produto": "sabão",
@@ -29,14 +29,13 @@
       "id": 6,
       "produto": "Feijao",
       "categoria": 2
-    }    
-
+    }
   ],
   "categorias": [
     {
       "id": 1,
       "categoria": "Limpeza"
-    }, 
+    },
     {
       "id": 2,
       "categoria": "Alimentos"
@@ -48,6 +47,22 @@
     {
       "id": 4,
       "categoria": "hortalicas"
+    },
+    {
+      "categoria": "novacategoria",
+      "id": 5
+    },
+    {
+      "categoria": "teste",
+      "id": 6
+    },
+    {
+      "categoria": "infantis",
+      "id": 7
+    },
+    {
+      "categoria": "aasdasdasdasd",
+      "id": 8
     }
   ]
 }
