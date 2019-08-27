@@ -1,7 +1,8 @@
  ## Para iniciar o serviço do DBJson
- '''
+
+```
 json-server --watch src/db.json --port 3001
-'''
+```
 -
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
