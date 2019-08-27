@@ -32,7 +32,7 @@ class Produtos extends Component {
 		const { match } = this.props
     const { categorias } = this.state
 		return(
-		<div className='row'>
+    <div className='row'>
 			<div className='col-md-2'>
         <h3>Categorias</h3>
         <ul>

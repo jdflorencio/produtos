@@ -1,4 +1,4 @@
- ## Para iniciar o serviço do DBJson
+ ## Para iniciar o serviço do Json-Server
 
 ```
 json-server --watch src/db.json --port 3001
