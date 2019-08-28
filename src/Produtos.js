@@ -13,26 +13,17 @@ class Produtos extends Component {
     }
     // this.removeCategoria = this.removeCategoria.bind(this)
     this.handleNewCategoria = this.handleNewCategoria.bind(this)
-    this.loadCategorias = this.loadCategorias.bind(this)    
+    // this.loadCategorias = this.loadCategorias.bind(this)    
     this.renderCategoria = this.renderCategoria.bind(this)
   }
 
-  loadCategorias() {
-    Api.loadCategorias()
-      .then(res => {
-        this.setState({
-          categorias: res.data
-        })
-      })
-  }
-
   componentDidMount(){
-    this.loadCategorias()    
+    // this.loadCategorias()    
   }
 
   removeCategoria(categoria) {
-    Api.deleteCategoria(categoria.id)
-    .then((res)=>this.loadCategorias())
+    // Api.deleteCategoria(categoria.id)
+    // .then((res)=>this.loadCategorias())
   }
 
   renderCategoria(cat){
@@ -49,6 +40,7 @@ class Produtos extends Component {
       </li>
     )
   }
+
   handleNewCategoria(key) {
     if(key.keyCode === 13) {
       axios
