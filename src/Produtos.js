@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom'
 import ProdutosHome from './ProdutosHome'
 import Categoria from './Categoria'
 import axios from 'axios'
+import Api from './Api'
 
 class Produtos extends Component {
   constructor(props){
@@ -17,8 +18,7 @@ class Produtos extends Component {
   }
 
   loadCategorias() {
-    axios
-      .get(`http://localhost:3001/categorias`)
+    Api.loadCategorias()
       .then(res => {
         this.setState({
           categorias: res.data
@@ -31,8 +31,7 @@ class Produtos extends Component {
   }
 
   removeCategoria(categoria) {
-    axios
-    .delete('http://localhost:3001/categorias/'+categoria.id)
+    Api.deleteCategoria(categoria.id)
     .then((res)=>this.loadCategorias())
   }
 
