@@ -32,14 +32,10 @@ class Produtos extends Component {
 
   handleNewCategoria(key) {
     if(key.keyCode === 13) {
-      axios
-      .post(`http://localhost:3001/categorias`, {
+      this.props.createCategoria({
         categoria: this.refs.categoria.value
       })
-      .then(res => {
-        this.refs.categoria.value = ''
-        this.loadCategorias()
-      })  
+      this.refs.categoria.value = ''
     }    
   }
 

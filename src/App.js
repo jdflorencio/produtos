@@ -16,6 +16,7 @@ class App extends Component {
     }
     this.loadCategorias = this.loadCategorias.bind(this)
     this.removeCategoria = this.removeCategoria.bind(this)
+    this.createCategoria = this.createCategoria.bind(this)
   }
 
   loadCategorias() {
@@ -33,6 +34,11 @@ class App extends Component {
   removeCategoria(categoria) {
     this.props.api.deleteCategoria(categoria.id)
     .then((res)=>this.loadCategorias())
+  }
+
+  createCategoria(categoria) {
+    this.props.api.createCategoria(categoria)
+    .then((res) => this.loadCategorias())
   }
 
   render() {
@@ -61,7 +67,8 @@ class App extends Component {
             return (<Produtos {...props} 
               loadCategorias={this.loadCategorias}
               categorias={this.state.categorias}
-              removeCategoria={this.removeCategoria}/>
+              removeCategoria={this.removeCategoria}
+              createCategoria={this.createCategoria}/>
             )}        
           }/>
   
