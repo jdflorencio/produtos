@@ -24,7 +24,6 @@ class App extends Component {
         this.setState({
           categorias: res.data
         })
-      console.log('aqui =>', this.state.categorias)
       })
       .catch( error => {
         console.log('error, ', error)

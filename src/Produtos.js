@@ -7,26 +7,20 @@ import axios from 'axios'
 class Produtos extends Component {
   constructor(props){
     super(props)
-    // this.removeCategoria = this.removeCategoria.bind(this)
     this.handleNewCategoria = this.handleNewCategoria.bind(this)
     this.renderCategoria = this.renderCategoria.bind(this)
   }
 
   componentDidMount(){
     this.props.loadCategorias()
-  }
-
-  removeCategoria(categoria) {
-    // Api.deleteCategoria(categoria.id)
-    // .then((res)=>this.loadCategorias())
-  }
+  } 
 
   renderCategoria(cat){
     return (
       <li key={cat.id}>
         <button 
           className='btn btn-sm'
-          onClick={() =>this.removeCategoria(cat)}
+          onClick={() =>this.props.removeCategoria(cat)}
           >
             <span className='glyphicon glyphicon-remove'></span>
         </button>
