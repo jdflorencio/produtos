@@ -3,22 +3,17 @@ import { Route, Link } from 'react-router-dom'
 import ProdutosHome from './ProdutosHome'
 import Categoria from './Categoria'
 import axios from 'axios'
-import Api from './Api'
 
 class Produtos extends Component {
   constructor(props){
     super(props)
-    this.state = {
-      categorias: []
-    }
     // this.removeCategoria = this.removeCategoria.bind(this)
     this.handleNewCategoria = this.handleNewCategoria.bind(this)
-    // this.loadCategorias = this.loadCategorias.bind(this)    
     this.renderCategoria = this.renderCategoria.bind(this)
   }
 
   componentDidMount(){
-    // this.loadCategorias()    
+    this.props.loadCategorias()
   }
 
   removeCategoria(categoria) {
@@ -53,12 +48,11 @@ class Produtos extends Component {
       })  
     }    
   }
+
 	render() {
-		const { match } = this.props
-    const { categorias } = this.state
+    const { match, categorias } = this.props
 		return(
-    <div className='row'>
-      
+    <div className='row'>      
 			<div className='col-md-2'>
         <h3>Categorias</h3>
         <ul>

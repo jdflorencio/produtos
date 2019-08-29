@@ -23,6 +23,9 @@ class App extends Component {
         this.setState({
           categorias: res.data
         })
+      .catch( error => {
+        console.log('error, ', error.res)
+      })
       })
   }
 
@@ -47,7 +50,14 @@ class App extends Component {
         <div className='container'>
           <Route exact path='/' component={Home}/>
           <Route exact path='/sobre' component={Sobre}/>
-          <Route path='/produtos' component={Produtos}/>
+
+          <Route path='/produtos'  render={(props)=> {
+            return (<Produtos {...props} 
+              loadCategorias={this.loadCategorias}
+              categorias={this.state.categorias}/>
+            )}        
+          }/>
+  
         </div>
         </div>
       </Router>
