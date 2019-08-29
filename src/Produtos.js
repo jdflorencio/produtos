@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 import ProdutosHome from './ProdutosHome'
 import Categoria from './Categoria'
-import axios from 'axios'
 
 class Produtos extends Component {
   constructor(props){
