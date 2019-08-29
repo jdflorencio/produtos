@@ -15,18 +15,25 @@ class App extends Component {
       categorias: []
     }
     this.loadCategorias = this.loadCategorias.bind(this)
+    this.removeCategoria = this.removeCategoria.bind(this)
   }
 
   loadCategorias() {
     this.props.api.loadCategorias()
-      .then(res => {
+      .then(res => {        
         this.setState({
           categorias: res.data
         })
+      console.log('aqui =>', this.state.categorias)
+      })
       .catch( error => {
-        console.log('error, ', error.res)
+        console.log('error, ', error)
       })
-      })
+  }
+
+  removeCategoria(categoria) {
+    this.props.api.deleteCategoria(categoria.id)
+    .then((res)=>this.loadCategorias())
   }
 
   render() {
@@ -54,7 +61,8 @@ class App extends Component {
           <Route path='/produtos'  render={(props)=> {
             return (<Produtos {...props} 
               loadCategorias={this.loadCategorias}
-              categorias={this.state.categorias}/>
+              categorias={this.state.categorias}
+              removeCategoria={this.removeCategoria}/>
             )}        
           }/>
   
