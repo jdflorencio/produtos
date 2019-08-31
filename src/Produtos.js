@@ -7,7 +7,7 @@ class Produtos extends Component {
   constructor(props){
     super(props)
     this.state = {
-      editngCategorias: ''
+      editingCategoria: ''
     }
     this.handleNewCategoria = this.handleNewCategoria.bind(this)
     this.renderCategoria = this.renderCategoria.bind(this)
@@ -22,19 +22,19 @@ class Produtos extends Component {
 
   editCategoria(categoria) {
     this.setState({
-      editngCategorias: categoria.id 
+      editingCategoria: categoria.id 
     })
   }
   cancelEdit() {
     this.setState({
-      editngCategorias: ''
+      editingCategoria: ''
     })
   }
 
   renderCategoria(cat){
     return (
       <li key={cat.id}>
-      {this.state.editngCategorias ===cat.id && 
+      {this.state.editingCategoria ===cat.id && 
       <div className="input-group">
         <div className="input-group-btn">
           <input onKeyUp={this.handleEditNewCategoria} ref={'cat-'+cat.id} className="form-control" type="text" defaultValue={cat.categoria} />
@@ -42,7 +42,7 @@ class Produtos extends Component {
         </div>
       </div>
       }
-      {this.state.editngCategorias !== cat.id && 
+      {this.state.editingCategoria !== cat.id && 
         <div>        
           <button 
               className='btn btn-sm m1-2'
@@ -74,11 +74,13 @@ class Produtos extends Component {
 
   handleEditNewCategoria(key) {
     if(key.keyCode === 13) {
-      /*this.props.createCategoria({
-        categoria: this.refs.categoria.value
+      this.props.editCategoria({
+        id: this.state.editingCategoria,
+        categoria: this.refs['cat-'+this.state.editingCategoria].value
       })
-      this.refs.categoria.value = ''*/
-      console.log(this.refs['cat-'+this.state.editngCategorias].value)
+      this.setState({
+        editCategoria: ''
+      })
     }    
   }
 
