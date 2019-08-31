@@ -6,25 +6,59 @@ import Categoria from './Categoria'
 class Produtos extends Component {
   constructor(props){
     super(props)
+    this.state = {
+      editngCategorias: ''
+    }
     this.handleNewCategoria = this.handleNewCategoria.bind(this)
     this.renderCategoria = this.renderCategoria.bind(this)
+    this.editCategoria = this.editCategoria.bind(this)
+    this.cancelEdit  =this.cancelEdit.bind(this)
+    this.handleEditNewCategoria = this.handleEditNewCategoria.bind(this)
   }
 
   componentDidMount(){
     this.props.loadCategorias()
-  } 
+  }
+
+  editCategoria(categoria) {
+    this.setState({
+      editngCategorias: categoria.id 
+    })
+  }
+  cancelEdit() {
+    this.setState({
+      editngCategorias: ''
+    })
+  }
 
   renderCategoria(cat){
     return (
       <li key={cat.id}>
-        <button 
-          className='btn btn-sm'
-          onClick={() =>this.props.removeCategoria(cat)}
-          >
-            <span className='glyphicon glyphicon-remove'></span>
-        </button>
-        <Link to={`/produtos/categoria/${cat.id}`}>{cat.categoria}</Link>
-        
+      {this.state.editngCategorias ===cat.id && 
+      <div className="input-group">
+        <div className="input-group-btn">
+          <input onKeyUp={this.handleEditNewCategoria} ref={'cat-'+cat.id} className="form-control" type="text" defaultValue={cat.categoria} />
+          <button className="btn" onClick={ this.cancelEdit}>Cancelar</button>
+        </div>
+      </div>
+      }
+      {this.state.editngCategorias !== cat.id && 
+        <div>        
+          <button 
+              className='btn btn-sm m1-2'
+              onClick={() =>this.props.removeCategoria(cat)}
+              >
+                <span className='glyphicon glyphicon-remove'></span>
+            </button>
+            <button 
+              className='btn btn-sm'
+              onClick={() =>this.editCategoria(cat)}
+              >
+                <span className='glyphicon glyphicon-pencil'></span>
+            </button>
+          <Link to={`/produtos/categoria/${cat.id}`}>{cat.categoria}</Link>
+        </div>
+    }
       </li>
     )
   }
@@ -38,13 +72,23 @@ class Produtos extends Component {
     }    
   }
 
+  handleEditNewCategoria(key) {
+    if(key.keyCode === 13) {
+      /*this.props.createCategoria({
+        categoria: this.refs.categoria.value
+      })
+      this.refs.categoria.value = ''*/
+      console.log(this.refs['cat-'+this.state.editngCategorias].value)
+    }    
+  }
+
 	render() {
     const { match, categorias } = this.props
 		return(
     <div className='row'>      
 			<div className='col-md-2'>
         <h3>Categorias</h3>
-        <ul>
+        <ul style={{listStyle: 'none', padding: 0}}>
           {categorias.map(this.renderCategoria)}
         </ul>
         <div className="well well-sm">
