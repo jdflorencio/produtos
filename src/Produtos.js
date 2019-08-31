@@ -74,12 +74,13 @@ class Produtos extends Component {
 
   handleEditNewCategoria(key) {
     if(key.keyCode === 13) {
+      console.log('aqui')
       this.props.editCategoria({
         id: this.state.editingCategoria,
         categoria: this.refs['cat-'+this.state.editingCategoria].value
       })
       this.setState({
-        editCategoria: ''
+        editingCategoria: ''
       })
     }    
   }
