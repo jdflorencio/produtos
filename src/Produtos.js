@@ -104,14 +104,17 @@ class Produtos extends Component {
             className='form-control'
             />
         </div>        
-				<Link to='/produtos/categoria/1'>Categorias 1</Link>
+				<Link to='/produtos/novo'>Add Produto</Link>
       </div>
 			<div className='col-md-10'>
 				<h3>Produtos</h3>
           <Route exact path={match.url} component={ProdutosHome} />
+          
           <Route exact path={match.url+'/novo'} render={(props)=> {
             return ( <ProdutoNovo {...props}
-              categorias={categorias}            />)
+              categorias={categorias}
+              createProduto={this.props.createProduto}
+              />)
           }} />
           <Route  path={match.url+'/categoria/:catId'} component={Categoria} />
 			</div>
