@@ -109,7 +109,10 @@ class Produtos extends Component {
 			<div className='col-md-10'>
 				<h3>Produtos</h3>
           <Route exact path={match.url} component={ProdutosHome} />
-          <Route exact path={match.url+'/novo'} component={ProdutoNovo} />
+          <Route exact path={match.url+'/novo'} render={(props)=> {
+            return ( <ProdutoNovo {...props}
+              categorias={categorias}            />)
+          }} />
           <Route  path={match.url+'/categoria/:catId'} component={Categoria} />
 			</div>
 		</div>)
