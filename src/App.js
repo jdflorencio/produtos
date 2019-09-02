@@ -49,7 +49,7 @@ class App extends Component {
   }
 
   createProduto(produto) {
-    this.props.api.createProduto(produto)
+    return this.props.api.createProduto(produto)
   }
 
   render() {
