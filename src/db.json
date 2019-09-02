@@ -29,12 +29,21 @@
       "id": 6,
       "produto": "Feijao",
       "categoria": 2
+    },
+    {
+      "produto": "novo produto",
+      "categoria": "1",
+      "id": 7
     }
   ],
   "categorias": [
     {
       "categoria": "limpeza",
       "id": 1
+    },
+    {
+      "categoria": "alimentos",
+      "id": 2
     }
   ]
 }
