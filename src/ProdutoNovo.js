@@ -15,8 +15,7 @@ class Produtos extends Component {
 			categoria: this.refs.categoria.value,
 		}
 		this.props.createProduto(produto)
-      .then((res)=>this.setState({redirect: '/produtos/categoria/'+produto.categoria}))
-      
+      .then((res)=>this.setState({redirect: '/produtos/categoria/'+produto.categoria}))      
 	}
 	
 	render() {
