@@ -117,11 +117,13 @@ class Produtos extends Component {
               />)
           }} />
           <Route  path={match.url+'/categoria/:catId'} 
-            render={(props) => { 
+            render={(props) => {
               return (<Categoria {...props}
                 loadProdutos={this.props.loadProdutos}
-                produtos={this.props.produtos}/>
-
+                produtos={this.props.produtos}
+                readCategoria={this.props.readCategoria}
+                categoria={this.props.categoria}
+                />
                 )
             }} />
 			</div>
