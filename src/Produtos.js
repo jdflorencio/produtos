@@ -116,7 +116,14 @@ class Produtos extends Component {
               createProduto={this.props.createProduto}
               />)
           }} />
-          <Route  path={match.url+'/categoria/:catId'} component={Categoria} />
+          <Route  path={match.url+'/categoria/:catId'} 
+            render={(props) => { 
+              return (<Categoria {...props}
+                loadProdutos={this.props.loadProdutos}
+                produtos={this.props.produtos}/>
+
+                )
+            }} />
 			</div>
 		</div>)
 		}

@@ -12,13 +12,15 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      categorias: []
+      categorias: [],
+      produtos: []
     }
     this.loadCategorias = this.loadCategorias.bind(this)
     this.removeCategoria = this.removeCategoria.bind(this)
     this.createCategoria = this.createCategoria.bind(this)
     this.editCategoria = this.editCategoria.bind(this)
     this.createProduto = this.createProduto.bind(this)
+    this.loadProdutos = this.loadProdutos.bind(this)
   }
 
   loadCategorias() {
@@ -52,6 +54,17 @@ class App extends Component {
     return this.props.api.createProduto(produto)
   }
 
+  loadProdutos(categoria) {
+    console.log('passando aqui =>', categoria)
+    this.props.api.loadProdutos(categoria)
+      .then((res) => {
+        console.log('retorno ',res.data)
+        this.setState({
+        produtos: res.data
+      })})
+      console.log(this.state.produtos)
+  }
+
   render() {
     return (
       <Router>
@@ -81,7 +94,10 @@ class App extends Component {
               removeCategoria={this.removeCategoria}
               createCategoria={this.createCategoria}
               editCategoria={this.editCategoria}
+              
               createProduto={this.createProduto}
+              loadProdutos={this.loadProdutos}
+              produtos={this.state.produtos}
               />
               
             )}        

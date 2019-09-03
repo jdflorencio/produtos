@@ -6,8 +6,8 @@ class Categoria extends Component{
     super(props)
     this.loadData = this.loadData.bind(this)
     this.state = {
-        produtos: [],
-        categoria: {}
+        categoria: {},
+        id: null
     }
   }
 	componentDidMount (){
@@ -16,13 +16,8 @@ class Categoria extends Component{
   }
 
   loadData(id) {
-    axios
-    .get(`http://localhost:3001/produtos?categoria=${id}`)
-    .then(res => (
-        this.setState({
-          produtos: res.data
-        })
-    ))
+    this.setState({ id })    
+    this.props.loadProdutos(id)
     axios
     .get(`http://localhost:3001/categorias/${id}`)
     .then(res => (
@@ -33,21 +28,22 @@ class Categoria extends Component{
   }
 
 	componentWillReceiveProps(newProps) {
-	this.loadData(newProps.match.params.catId)
+    if( newProps.match.params.catId !== this.state.id) {
+      this.loadData(newProps.match.params.catId)
+    }	
   }
   
   renderProduto(produto) {
     return (
       <p className='well' key={produto.id}>{produto.produto}</p>
     )
-
   }
-	
+
 	render(){
 	return (
 	<div>
 			<h2> {this.state.categoria.categoria}</h2>
-			<p>{this.state.produtos.map(this.renderProduto)}</p>
+			<p>{this.props.produtos.map(this.renderProduto)}</p>
 	</div>)
 	}
 }
