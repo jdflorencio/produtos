@@ -48,7 +48,10 @@ class Categoria extends Component{
 	render(){
 	return (
 	<div>
-			<h2> {this.props.categoria}</h2>
+      <h2> {this.props.categoria}</h2>
+      {this.props.produtos.length === 0 &&
+        <p className='alert alert-danger'>Nenhum produto</p>
+      }
 			<p>{this.props.produtos.map(this.renderProduto)}</p>
 	</div>)
 	}
