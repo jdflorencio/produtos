@@ -25,6 +25,7 @@ class App extends Component {
     this.createProduto = this.createProduto.bind(this)
     this.loadProdutos = this.loadProdutos.bind(this)
     this.readCategoria = this.readCategoria.bind(this)
+    this.removeProduto = this.removeProduto.bind(this)
 
   }
 
@@ -76,6 +77,10 @@ class App extends Component {
       })
   }
 
+  removeProduto(produto) {
+    return this.props.api.deleteProduto(produto.id)
+  }
+
   render() {
     return (
       <Router>
@@ -112,6 +117,7 @@ class App extends Component {
 
               readCategoria={this.readCategoria}
               categoria={this.state.categoria}
+              removeProduto={this.removeProduto}
               />
               
             )}        

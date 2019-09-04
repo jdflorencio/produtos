@@ -1,5 +1,4 @@
 import React, {Component}from 'react'
-import axios from 'axios'
 
 class Categoria extends Component{
 	constructor(props){
@@ -9,6 +8,7 @@ class Categoria extends Component{
         id: null
     }
     this.loadData = this.loadData.bind(this)
+    this.renderProduto = this.renderProduto.bind(this)
   }
 
 	componentDidMount (){
@@ -20,6 +20,7 @@ class Categoria extends Component{
     this.setState({ id })    
     this.props.loadProdutos(id)
     this.props.readCategoria(id)
+
   }
 
 	componentWillReceiveProps(newProps) {
@@ -30,7 +31,17 @@ class Categoria extends Component{
   
   renderProduto(produto) {
     return (
-      <p className='well' key={produto.id}>{produto.produto}</p>
+      <p className='well' key={produto.id}>
+      {produto.produto}
+      <button 
+      className="btn btn-danger"
+      onClick={() => {
+        this.props.removeProduto(produto)
+          .then(res => this.loadData(this.props.match.params.catId))
+      }}>
+        Excluir
+      </button>
+      </p>
     )
   }
 

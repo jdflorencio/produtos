@@ -123,6 +123,7 @@ class Produtos extends Component {
                 produtos={this.props.produtos}
                 readCategoria={this.props.readCategoria}
                 categoria={this.props.categoria}
+                removeProduto={this.props.removeProduto}
                 />
                 )
             }} />
