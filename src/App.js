@@ -1,7 +1,7 @@
 import React, { Component }from 'react'
-import Home from './Home'
-import Sobre from './Sobre'
-import Produtos from './Produtos'
+import Home from './views/home/Home'
+import Sobre from './views/sobre/Sobre'
+import Produtos from './views/produtos/Produtos'
 import {
   BrowserRouter as Router,
   Route,
